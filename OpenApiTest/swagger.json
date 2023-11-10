@@ -1,0 +1,65 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "OpenApiTest",
+    "version": "1.0"
+  },
+  "paths": {
+    "/OpenApi": {
+      "put": {
+        "tags": [
+          "OpenApi"
+        ],
+        "operationId": "BreakOpenApi",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BreakOpenApiModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BreakOpenApiModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BreakOpenApiModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "BreakOpenApiModel": {
+        "type": "object",
+        "properties": {
+          "system": {
+            "$ref": "#/components/schemas/Supported"
+          },
+          "newtonsoft": {
+            "$ref": "#/components/schemas/Supported"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Supported": {
+        "enum": [
+          0,
+          1
+        ],
+        "type": "integer",
+        "format": "int32"
+      }
+    }
+  }
+}
